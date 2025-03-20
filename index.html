@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Section Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Header with Coin Section -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>My Website</h1>
+      </div>
+      <div class="coin-section">
+        <span id="coin-balance">100</span> Coins
+        <button id="recharge-btn">Recharge</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#emi-calculator">EMI Calculator</a></li>
+      <li><a href="#loan-calculator">Loan Calculator</a></li>
+      <li><a href="#mini-games">Mini Games</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sections -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to My Website</h2>
+      <p>Explore our features and enjoy the experience!</p>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p><strong>Developer:</strong> OP~Hiren</p>
+      <p><strong>FF ID:</strong> 1186884135</p>
+      <p><strong>BGMI ID:</strong> SigmaXnMADARA</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p><strong>Address:</strong> GMIU Sidsar Road, Bhavnagar, Gujarat</p>
+      <p><strong>Pin:</strong> 364070</p>
+      <p><strong>Phone:</strong> 8780404217</p>
+      <p><strong>Telephone:</strong> +91 1800-9772-6552</p>
+      <p><strong>Email:</strong> sumrahiren020@gmail.com</p>
+    </div>
+  </section>
+
+  <section id="emi-calculator" class="emi-calculator">
+    <div class="container">
+      <h2>EMI Calculator</h2>
+      <form id="emi-form">
+        <label for="loan-amount">Loan Amount:</label>
+        <input type="number" id="loan-amount" required>
+        <label for="interest-rate">Interest Rate (%):</label>
+        <input type="number" id="interest-rate" required>
+        <label for="loan-tenure">Loan Tenure (Months):</label>
+        <input type="number" id="loan-tenure" required>
+        <button type="submit">Calculate EMI</button>
+      </form>
+      <p id="emi-result"></p>
+    </div>
+  </section>
+
+  <section id="loan-calculator" class="loan-calculator">
+    <div class="container">
+      <h2>Loan Calculator</h2>
+      <form id="loan-form">
+        <label for="principal">Principal Amount:</label>
+        <input type="number" id="principal" required>
+        <label for="rate">Interest Rate (%):</label>
+        <input type="number" id="rate" required>
+        <label for="time">Time (Years):</label>
+        <input type="number" id="time" required>
+        <button type="submit">Calculate Loan</button>
+      </form>
+      <p id="loan-result"></p>
+    </div>
+  </section>
+
+  <section id="mini-games" class="mini-games">
+    <div class="container">
+      <h2>Mini Games</h2>
+      <div class="game-list">
+        <div class="game-card" data-cost="10">
+          <h3>Game 1</h3>
+          <p>Cost: 10 Coins</p>
+          <button class="play-btn">Play</button>
+        </div>
+        <div class="game-card" data-cost="20">
+          <h3>Game 2</h3>
+          <p>Cost: 20 Coins</p>
+          <button class="play-btn">Play</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Sections -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Services</h2>
+      <p>We offer a variety of services to meet your needs.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <p>Find answers to frequently asked questions.</p>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <p>Read what our users have to say about us.</p>
+    </div>
+  </section>
+
+  <section id="blog" class="blog">
+    <div class="container">
+      <h2>Blog</h2>
+      <p>Stay updated with our latest posts.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 My Website. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
