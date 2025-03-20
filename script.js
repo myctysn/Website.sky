@@ -10,7 +10,7 @@ document.getElementById('recharge-btn').addEventListener('click', () => {
   updateCoinBalance();
 });
 
-// Mini Games
+// Mini Games Section
 document.querySelectorAll('.play-btn').forEach(button => {
   button.addEventListener('click', () => {
     const gameCard = button.closest('.game-card');
@@ -19,35 +19,59 @@ document.querySelectorAll('.play-btn').forEach(button => {
     if (coinBalance >= cost) {
       coinBalance -= cost;
       updateCoinBalance();
-      alert(`You have successfully played the game! ${cost} coins deducted.`);
+      const gameContainer = gameCard.querySelector('.game-container');
+      gameContainer.style.display = 'block';
     } else {
       alert('Insufficient coins. Please recharge.');
     }
   });
 });
 
-// EMI Calculator
-document.getElementById('emi-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const loanAmount = parseFloat(document.getElementById('loan-amount').value);
-  const interestRate = parseFloat(document.getElementById('interest-rate').value);
-  const loanTenure = parseFloat(document.getElementById('loan-tenure').value);
+// Tic-Tac-Toe Game
+const ticTacToeCells = document.querySelectorAll('.tic-tac-toe-grid .cell');
+let currentPlayer = 'X';
+let gameActive = true;
 
-  const monthlyInterest = interestRate / 1200;
-  const emi = (loanAmount * monthlyInterest * Math.pow(1 + monthlyInterest, loanTenure)) / (Math.pow(1 + monthlyInterest, loanTenure) - 1);
-
-  document.getElementById('emi-result').textContent = `Your EMI is: ₹${emi.toFixed(2)}`;
+ticTacToeCells.forEach(cell => {
+  cell.addEventListener('click', () => {
+    if (gameActive && !cell.textContent) {
+      cell.textContent = currentPlayer;
+      checkWin();
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+  });
 });
 
-// Loan Calculator
-document.getElementById('loan-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const principal = parseFloat(document.getElementById('principal').value);
-  const rate = parseFloat(document.getElementById('rate').value);
-  const time = parseFloat(document.getElementById('time').value);
+function checkWin() {
+  const winningCombinations = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6] // Diagonals
+  ];
 
-  const interest = (principal * rate * time) / 100;
-  const totalAmount = principal + interest;
+  for (const combination of winningCombinations) {
+    const [a, b, c] = combination;
+    if (
+      ticTacToeCells[a].textContent &&
+      ticTacToeCells[a].textContent === ticTacToeCells[b].textContent &&
+      ticTacToeCells[a].textContent === ticTacToeCells[c].textContent
+    ) {
+      gameActive = false;
+      document.getElementById('tic-tac-toe-result').textContent = `Player ${ticTacToeCells[a].textContent} wins!`;
+      break;
+    }
+  }
+}
 
-  document.getElementById('loan-result').textContent = `Total Amount: ₹${totalAmount.toFixed(2)}`;
+// Reset Buttons
+document.querySelectorAll('.reset-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const gameContainer = button.closest('.game-container');
+    gameContainer.style.display = 'none';
+    if (gameContainer.id === 'tic-tac-toe') {
+      ticTacToeCells.forEach(cell => (cell.textContent = ''));
+      gameActive = true;
+      document.getElementById('tic-tac-toe-result').textContent = '';
+    }
+  });
 });
