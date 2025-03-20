@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multi-Section Website</title>
+  <title>Multi-Section Website with Mini Games</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -97,19 +97,66 @@
     </div>
   </section>
 
+  <!-- Mini Games Section -->
   <section id="mini-games" class="mini-games">
     <div class="container">
       <h2>Mini Games</h2>
       <div class="game-list">
+        <!-- Tic-Tac-Toe -->
         <div class="game-card" data-cost="10">
-          <h3>Game 1</h3>
+          <h3>Tic-Tac-Toe</h3>
           <p>Cost: 10 Coins</p>
           <button class="play-btn">Play</button>
+          <div class="game-container" id="tic-tac-toe" style="display: none;">
+            <div class="tic-tac-toe-grid">
+              <div class="cell" data-index="0"></div>
+              <div class="cell" data-index="1"></div>
+              <div class="cell" data-index="2"></div>
+              <div class="cell" data-index="3"></div>
+              <div class="cell" data-index="4"></div>
+              <div class="cell" data-index="5"></div>
+              <div class="cell" data-index="6"></div>
+              <div class="cell" data-index="7"></div>
+              <div class="cell" data-index="8"></div>
+            </div>
+            <p id="tic-tac-toe-result"></p>
+            <button class="reset-btn">Reset</button>
+          </div>
         </div>
+
+        <!-- Memory Game -->
+        <div class="game-card" data-cost="15">
+          <h3>Memory Game</h3>
+          <p>Cost: 15 Coins</p>
+          <button class="play-btn">Play</button>
+          <div class="game-container" id="memory-game" style="display: none;">
+            <div class="memory-grid">
+              <div class="card" data-index="0"></div>
+              <div class="card" data-index="1"></div>
+              <div class="card" data-index="2"></div>
+              <div class="card" data-index="3"></div>
+              <div class="card" data-index="4"></div>
+              <div class="card" data-index="5"></div>
+              <div class="card" data-index="6"></div>
+              <div class="card" data-index="7"></div>
+            </div>
+            <p id="memory-game-result"></p>
+            <button class="reset-btn">Reset</button>
+          </div>
+        </div>
+
+        <!-- Guess the Number -->
         <div class="game-card" data-cost="20">
-          <h3>Game 2</h3>
+          <h3>Guess the Number</h3>
           <p>Cost: 20 Coins</p>
           <button class="play-btn">Play</button>
+          <div class="game-container" id="guess-the-number" style="display: none;">
+            <p>Guess a number between 1 and 100:</p>
+            <input type="number" id="guess-input" min="1" max="100">
+            <button id="guess-btn">Submit</button>
+            <p id="guess-result"></p>
+            <button class="reset-btn">Reset</button>
+          </div>
         </div>
       </div>
     </div>
