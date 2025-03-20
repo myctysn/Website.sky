@@ -5,6 +5,7 @@ function updateCoinBalance() {
   document.getElementById('coin-balance').textContent = coinBalance;
 }
 
+// Recharge Coins
 document.getElementById('recharge-btn').addEventListener('click', () => {
   coinBalance += 100;
   updateCoinBalance();
@@ -20,7 +21,7 @@ document.querySelectorAll('.play-btn').forEach(button => {
       coinBalance -= cost;
       updateCoinBalance();
       const gameContainer = gameCard.querySelector('.game-container');
-      gameContainer.style.display = 'block';
+      gameContainer.style.display = 'block'; // Show the game container
     } else {
       alert('Insufficient coins. Please recharge.');
     }
@@ -67,11 +68,43 @@ function checkWin() {
 document.querySelectorAll('.reset-btn').forEach(button => {
   button.addEventListener('click', () => {
     const gameContainer = button.closest('.game-container');
-    gameContainer.style.display = 'none';
+    gameContainer.style.display = 'none'; // Hide the game container
     if (gameContainer.id === 'tic-tac-toe') {
       ticTacToeCells.forEach(cell => (cell.textContent = ''));
       gameActive = true;
       document.getElementById('tic-tac-toe-result').textContent = '';
     }
   });
+});
+
+// Guess the Number Game
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+
+document.getElementById('guess-btn').addEventListener('click', () => {
+  const guessInput = document.getElementById('guess-input');
+  const guessResult = document.getElementById('guess-result');
+  const userGuess = parseInt(guessInput.value);
+
+  if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+    guessResult.textContent = 'Please enter a valid number between 1 and 100.';
+    return;
+  }
+
+  attempts++;
+  if (userGuess === randomNumber) {
+    guessResult.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+  } else if (userGuess < randomNumber) {
+    guessResult.textContent = 'Too low! Try again.';
+  } else {
+    guessResult.textContent = 'Too high! Try again.';
+  }
+});
+
+// Reset Guess the Number Game
+document.querySelector('#guess-the-number .reset-btn').addEventListener('click', () => {
+  randomNumber = Math.floor(Math.random() * 100) + 1;
+  attempts = 0;
+  document.getElementById('guess-input').value = '';
+  document.getElementById('guess-result').textContent = '';
 });
