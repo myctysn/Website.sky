@@ -22,9 +22,20 @@ document.querySelectorAll('.play-btn').forEach(button => {
       updateCoinBalance();
       const gameContainer = gameCard.querySelector('.game-container');
       gameContainer.style.display = 'block'; // Show the game container
+      button.style.display = 'none'; // Hide the Play button
     } else {
       alert('Insufficient coins. Please recharge.');
     }
+  });
+});
+
+// Reset Buttons
+document.querySelectorAll('.reset-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const gameContainer = button.closest('.game-container');
+    gameContainer.style.display = 'none'; // Hide the game container
+    const playButton = gameContainer.closest('.game-card').querySelector('.play-btn');
+    playButton.style.display = 'block'; // Show the Play button again
   });
 });
 
@@ -64,17 +75,11 @@ function checkWin() {
   }
 }
 
-// Reset Buttons
-document.querySelectorAll('.reset-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const gameContainer = button.closest('.game-container');
-    gameContainer.style.display = 'none'; // Hide the game container
-    if (gameContainer.id === 'tic-tac-toe') {
-      ticTacToeCells.forEach(cell => (cell.textContent = ''));
-      gameActive = true;
-      document.getElementById('tic-tac-toe-result').textContent = '';
-    }
-  });
+// Reset Tic-Tac-Toe Game
+document.querySelector('#tic-tac-toe .reset-btn').addEventListener('click', () => {
+  ticTacToeCells.forEach(cell => (cell.textContent = ''));
+  gameActive = true;
+  document.getElementById('tic-tac-toe-result').textContent = '';
 });
 
 // Guess the Number Game
@@ -86,8 +91,8 @@ document.getElementById('guess-btn').addEventListener('click', () => {
   const guessResult = document.getElementById('guess-result');
   const userGuess = parseInt(guessInput.value);
 
-  if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-    guessResult.textContent = 'Please enter a valid number between 1 and 100.';
+  if (isNaN(userGuess) {
+    guessResult.textContent = 'Please enter a valid number.';
     return;
   }
 
